@@ -1,0 +1,15 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/terraform.tfvars
+
+# Secrets
+.env
+*.pem
+
+# OS / Python
+.DS_Store
+__pycache__/
+*.pyc
