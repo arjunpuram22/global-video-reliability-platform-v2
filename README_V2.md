@@ -63,7 +63,7 @@ Key components:
 
 ---
 
-### Step 1 — EKS Cluster is Ready (Nodes Online)
+### Step 1 - EKS Cluster is Ready (Nodes Online)
 
 First, I verified the EKS cluster was provisioned successfully and worker nodes joined the cluster.
 
@@ -71,7 +71,7 @@ First, I verified the EKS cluster was provisioned successfully and worker nodes 
 
 ---
 
-### Step 2 — Kubernetes Namespaces Created
+### Step 2 - Kubernetes Namespaces Created
 
 I separated workloads into two namespaces to keep production services and monitoring cleanly isolated:
 - `app` for application components
@@ -81,7 +81,7 @@ I separated workloads into two namespaces to keep production services and monito
 
 ---
 
-### Step 3 — Monitoring Stack Running (kube-prometheus-stack)
+### Step 3 - Monitoring Stack Running (kube-prometheus-stack)
 
 I deployed the Prometheus Operator stack using Helm and confirmed core monitoring components are healthy (Prometheus, Grafana, Alertmanager).
 
@@ -89,7 +89,7 @@ I deployed the Prometheus Operator stack using Helm and confirmed core monitorin
 
 ---
 
-### Step 4 — Grafana Accessible
+### Step 4 - Grafana Accessible
 
 Grafana was exposed locally using port-forward and verified via UI access.
 
@@ -97,7 +97,7 @@ Grafana was exposed locally using port-forward and verified via UI access.
 
 ---
 
-### Step 5 — Redis Queue Running in `app` Namespace
+### Step 5 - Redis Queue Running in `app` Namespace
 
 Redis acts as the in-cluster queue backend for job buffering and decoupled processing.
 
@@ -105,7 +105,7 @@ Redis acts as the in-cluster queue backend for job buffering and decoupled proce
 
 ---
 
-### Step 6 — Application Config Loaded (ConfigMap)
+### Step 6 - Application Config Loaded (ConfigMap)
 
 I created a ConfigMap to store application-level settings (ports, service names, metrics paths) used by the Kubernetes manifests.
 
@@ -113,7 +113,7 @@ I created a ConfigMap to store application-level settings (ports, service names,
 
 ---
 
-### Step 7 — Database Secret Created (RDS Credentials)
+### Step 7 - Database Secret Created (RDS Credentials)
 
 RDS PostgreSQL is provisioned via Terraform. I created a Kubernetes Secret in the `app` namespace to store DB credentials for future integration.
 
@@ -121,7 +121,7 @@ RDS PostgreSQL is provisioned via Terraform. I created a Kubernetes Secret in th
 
 ---
 
-### Step 8 — ECR Repositories Created
+### Step 8 - ECR Repositories Created
 
 I created separate ECR repositories to store container images for the upload and worker services.
 
@@ -129,7 +129,7 @@ I created separate ECR repositories to store container images for the upload and
 
 ---
 
-### Step 9 — ECR Login Succeeded
+### Step 9 - ECR Login Succeeded
 
 I authenticated Docker to ECR to enable secure pushes of application container images.
 
@@ -137,7 +137,7 @@ I authenticated Docker to ECR to enable secure pushes of application container i
 
 ---
 
-### Step 10 — Services Copied into V2 Repo (K8s + ECR Ready)
+### Step 10 - Services Copied into V2 Repo (K8s + ECR Ready)
 
 I prepared the codebase structure for Kubernetes deployment by organizing service folders for image build/push and manifests.
 
@@ -145,7 +145,7 @@ I prepared the codebase structure for Kubernetes deployment by organizing servic
 
 ---
 
-### Step 11 — Upload Service Image Pushed to ECR
+### Step 11 - Upload Service Image Pushed to ECR
 
 The upload-service image was built and pushed to ECR (linux/amd64), ready for EKS nodes to pull and run.
 
@@ -153,7 +153,7 @@ The upload-service image was built and pushed to ECR (linux/amd64), ready for EK
 
 ---
 
-### Step 12 — Worker Service Image Pushed to ECR
+### Step 12 - Worker Service Image Pushed to ECR
 
 The worker-service image was built and pushed to ECR (linux/amd64), ready for EKS nodes to pull and run.
 
@@ -161,7 +161,7 @@ The worker-service image was built and pushed to ECR (linux/amd64), ready for EK
 
 ---
 
-### Step 13 — Application Pods Running (Upload + Worker + Redis)
+### Step 13 - Application Pods Running (Upload + Worker + Redis)
 
 After deploying manifests, I validated that all application pods are running and healthy inside the `app` namespace.
 
@@ -169,7 +169,7 @@ After deploying manifests, I validated that all application pods are running and
 
 ---
 
-### Step 14 — Services and Endpoints Verified
+### Step 14 - Services and Endpoints Verified
 
 I confirmed Kubernetes Services and Endpoints are correctly wired for internal service discovery:
 - upload-service reachable via ClusterIP
@@ -180,7 +180,7 @@ I confirmed Kubernetes Services and Endpoints are correctly wired for internal s
 
 ---
 
-### Step 15 — End-to-End Proof (Request → Queue → Worker → Metrics)
+### Step 15 - End-to-End Proof (Request → Queue → Worker → Metrics)
 
 I validated the full pipeline end-to-end:
 - sent a job request to upload-service
@@ -192,7 +192,7 @@ I validated the full pipeline end-to-end:
 
 ---
 
-### Step 16 — Prometheus Scraping Confirmed (Targets Up)
+### Step 16 - Prometheus Scraping Confirmed (Targets Up)
 
 I verified Prometheus is scraping the application endpoints successfully (targets are UP).
 
@@ -200,7 +200,7 @@ I verified Prometheus is scraping the application endpoints successfully (target
 
 ---
 
-### Step 17 — Prometheus App Metric Queries Verified
+### Step 17 - Prometheus App Metric Queries Verified
 
 I queried key application metrics directly in Prometheus to confirm that metrics are collected and updating:
 - `upload_requests_total`
@@ -211,7 +211,7 @@ I queried key application metrics directly in Prometheus to confirm that metrics
 
 ---
 
-### Step 18 — ServiceMonitor Targets Visible (Prometheus Operator)
+### Step 18 - ServiceMonitor Targets Visible (Prometheus Operator)
 
 I validated Prometheus Operator discovery by confirming ServiceMonitor-based targets exist for both services.
 
@@ -219,7 +219,7 @@ I validated Prometheus Operator discovery by confirming ServiceMonitor-based tar
 
 ---
 
-### Step 19 — Grafana Prometheus Datasource Working
+### Step 19 - Grafana Prometheus Datasource Working
 
 Grafana’s Prometheus datasource was tested successfully and confirmed it can query the Prometheus API.
 
@@ -227,7 +227,7 @@ Grafana’s Prometheus datasource was tested successfully and confirmed it can q
 
 ---
 
-### Step 20 — Kubernetes Namespace Dashboard (Visibility Into Pods)
+### Step 20 - Kubernetes Namespace Dashboard (Visibility Into Pods)
 
 I used the built-in Kubernetes dashboards to confirm Grafana can visualize workload and resource behavior for the `app` namespace.
 
@@ -235,7 +235,7 @@ I used the built-in Kubernetes dashboards to confirm Grafana can visualize workl
 
 ---
 
-### Step 21 — Custom Application Dashboard Created
+### Step 21 - Custom Application Dashboard Created
 
 I created a clean app dashboard focused on SRE signals:
 - Upload request volume
@@ -246,7 +246,7 @@ I created a clean app dashboard focused on SRE signals:
 
 ---
 
-### Step 22 — Worker Processing Stall Alert (FIRING Proof)
+### Step 22 - Worker Processing Stall Alert (FIRING Proof)
 
 I configured a reliability alert to detect processing stalls and captured the FIRING state as validation.
 
@@ -254,7 +254,7 @@ I configured a reliability alert to detect processing stalls and captured the FI
 
 ---
 
-### Step 23 — Baseline System State (Before Load)
+### Step 23 - Baseline System State (Before Load)
 
 Before triggering traffic, I captured baseline behavior in Grafana to show the system is stable under no/low load.
 
@@ -262,7 +262,7 @@ Before triggering traffic, I captured baseline behavior in Grafana to show the s
 
 ---
 
-### Step 24 — Metrics During Load Spike
+### Step 24 - Metrics During Load Spike
 
 I generated traffic and observed the metrics increase in Grafana (workload spike visibility).
 
@@ -270,7 +270,7 @@ I generated traffic and observed the metrics increase in Grafana (workload spike
 
 ---
 
-### Step 25 — Recovery After Load
+### Step 25 - Recovery After Load
 
 After the spike ended, I observed the system returning to steady state, confirming recovery behavior.
 
@@ -278,7 +278,7 @@ After the spike ended, I observed the system returning to steady state, confirmi
 
 ---
 
-### Step 26 — 4x Spike Alert (FIRING Proof)
+### Step 26 - 4x Spike Alert (FIRING Proof)
 
 I implemented a spike-based alert using a real traffic baseline and validated that it fires when request rate crosses the 4× threshold.
 
@@ -286,7 +286,7 @@ I implemented a spike-based alert using a real traffic baseline and validated th
 
 ---
 
-### Step 27 — 5x Spike Alert (FIRING Proof)
+### Step 27 - 5x Spike Alert (FIRING Proof)
 
 I created a stricter 5× spike alert to detect larger bursts and validated the FIRING state.
 
@@ -294,7 +294,7 @@ I created a stricter 5× spike alert to detect larger bursts and validated the F
 
 ---
 
-### Step 28 — Alert Rules Summary (All Custom Rules)
+### Step 28 - Alert Rules Summary (All Custom Rules)
 
 Finally, I captured the alert list filtered to my rules to show the final alerting coverage in one view.
 
