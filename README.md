@@ -1,4 +1,4 @@
-# Global Video Reliability Platform — EKS + Observability + RDS
+# Video Reliability Platform — SRE Metrics, Dashboards & Alerting on AWS EKS
 
 ## Project Overview
 
