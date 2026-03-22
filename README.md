@@ -116,7 +116,6 @@ Prometheus is scraping both application endpoints via ServiceMonitors (targets s
 
 ![Prometheus Targets App Scrape](screenshots/v2-16-prometheus-targets-app-scrape.png)
 ![Prometheus App Metrics Query](screenshots/v2-17-prometheus-app-metrics-query.png)
-![ServiceMonitor Targets](screenshots/v2-19-prometheus-targets-app-servicemonitors.png)
 ![Grafana Prometheus Datasource](screenshots/v2-20-grafana-prometheus-datasource.png)
 
 ---
