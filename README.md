@@ -130,7 +130,7 @@ Then I built a **custom application dashboard** with three panels focused on SRE
 
 ![Grafana App Dashboard](screenshots/v2-22-grafana-app-dashboard.png)
 
-**Worker stall alert** — Configured to fire when `worker_active_jobs` drops below 1 while the queue has pending work. This detects the failure mode where a worker pod is running but not processing. Validated by capturing the FIRING state.
+**Worker stall alert** - Configured to fire when `worker_active_jobs` drops below 1 while the queue has pending work. This detects the failure mode where a worker pod is running but not processing. Validated by capturing the FIRING state.
 
 ![Stall Alert Firing](screenshots/v2-23-alert-firing.png)
 
@@ -140,7 +140,7 @@ Then I built a **custom application dashboard** with three panels focused on SRE
 
 I captured the system's behavior across three states to prove observability under real conditions:
 
-**Baseline (before load)** — System stable, flat metrics, no alerts firing.
+**Baseline (before load)** - System stable, flat metrics, no alerts firing.
 
 ![Before Load](screenshots/v2-24-grafana-before-load.png)
 
