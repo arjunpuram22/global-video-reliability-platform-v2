@@ -126,7 +126,7 @@ I first verified Grafana could visualize Kubernetes workload data using the buil
 
 ![Grafana K8s Namespace Pods Dashboard](screenshots/v2-21-grafana-k8s-namespace-pods-dashboard.png)
 
-Then I built a **custom application dashboard** with three panels focused on SRE signals: upload request volume, worker processing throughput, and worker active job count.
+Then I built a **custom application dashboard** with three panels focused on SRE signals: upload requests total, jobs processed total, and worker active jobs.
 
 ![Grafana App Dashboard](screenshots/v2-22-grafana-app-dashboard.png)
 
