@@ -156,7 +156,7 @@ I captured the system's behavior across three states to prove observability unde
 
 ![4x Spike Alert Firing](screenshots/v2-27-alert-4x-spike-FIRING.png)
 
-**5× spike alert** - Fires when the same rate exceeds 100. Validated with FIRING state at 228 req/min.
+**5× spike alert** - Fires when the same rate exceeds 100. Validated with FIRING state.
 
 ![5x Spike Alert Firing](screenshots/v2-28-alert-5x-spike-firing.png)
 
